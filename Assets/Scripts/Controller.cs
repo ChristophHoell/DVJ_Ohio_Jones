@@ -30,6 +30,6 @@ public class Controller : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidbody.MovePosition(_rigidbody.position + _velocity * Time.fixedDeltaTime);
+        // _rigidbody.MovePosition(_rigidbody.position + _velocity * Time.fixedDeltaTime);
     }
 }
