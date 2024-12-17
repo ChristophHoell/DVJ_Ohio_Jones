@@ -34,6 +34,7 @@ public class FieldOfView : MonoBehaviour
         {
             yield return new WaitForSeconds(delay);
             FindVisibleTargets();
+            if (visibleTargets.Count > 0) Debug.Log("Player detected");
         }
     }
 
@@ -58,6 +59,7 @@ public class FieldOfView : MonoBehaviour
                 }
             }
         }
+       
     }
 
     private void DrawFieldOfView()
