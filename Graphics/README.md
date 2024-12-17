@@ -6,7 +6,7 @@ The player can interact with these objects to increase his score (or for example
 ### Objects:
 Chest
 Wardrobe
-Altar
+Altar (only once placed)
 
 
 ## Obstacles (Hiding):
