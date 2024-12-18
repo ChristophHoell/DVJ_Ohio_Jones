@@ -43,7 +43,7 @@ public class SceneLoader : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the colliding object is tagged as "Player"
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Goal"))
         {
             LoadNextLevel();
         }
