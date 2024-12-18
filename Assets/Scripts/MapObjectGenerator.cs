@@ -14,6 +14,8 @@ public class MapObjectGenerator : MonoBehaviour
     [Header("Prefabs")]
     public GameObject enemyType1Prefab;
     public GameObject enemyType2Prefab;
+    public GameObject enemyType3Prefab;
+    public GameObject enemyType4Prefab;
     public GameObject obstacle1Prefab;
     public GameObject obstacle2Prefab;
     public GameObject obstacle3Prefab;
@@ -29,9 +31,17 @@ public class MapObjectGenerator : MonoBehaviour
     public int minEnemyType2 = 3;
     [Range(0, 50)]
     public int maxEnemyType2 = 7;
-    [Range(0, 300)]
+    [Range(0, 50)]
+    public int minEnemyType3 = 3;
+    [Range(0, 50)]
+    public int maxEnemyType3 = 7;
+    [Range(0, 50)]
+    public int minEnemyType4 = 3;
+    [Range(0, 50)]
+    public int maxEnemyType4 = 7;
+    [Range(0, 500)]
     public int minObstacles = 10;
-    [Range(0, 300)]
+    [Range(0, 500)]
     public int maxObstacles = 20;
 
     private bool[,] occupiedTiles;
@@ -243,12 +253,20 @@ public class MapObjectGenerator : MonoBehaviour
     {
         int enemyType1Count = Random.Range(minEnemyType1, maxEnemyType1 + 1);
         int enemyType2Count = Random.Range(minEnemyType2, maxEnemyType2 + 1);
+        int enemyType3Count = Random.Range(minEnemyType3, maxEnemyType3 + 1);
+        int enemyType4Count = Random.Range(minEnemyType4, maxEnemyType4 + 1);
 
         for (int i = 0; i < enemyType1Count; i++)
-            PlaceObjectInSafeLocation(enemyType1Prefab, 15);
+            PlaceObjectInSafeLocation(enemyType1Prefab, 16);
 
         for (int i = 0; i < enemyType2Count; i++)
-            PlaceObjectInSafeLocation(enemyType2Prefab, 15);
+            PlaceObjectInSafeLocation(enemyType2Prefab, 16);
+
+        for (int i = 0; i < enemyType3Count; i++)
+            PlaceObjectInSafeLocation(enemyType3Prefab, 16);
+
+        for (int i = 0; i < enemyType4Count; i++)
+            PlaceObjectInSafeLocation(enemyType4Prefab, 16);
     }
 
     private void PlaceObstacles()

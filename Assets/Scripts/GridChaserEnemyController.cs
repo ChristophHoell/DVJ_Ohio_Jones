@@ -35,9 +35,9 @@ public class GridChaserEnemyController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Mesh viewMesh;
     private Transform currentTarget;
-    private Vector2 currentDirection;
     private Vector2 gridPosition;
     private bool isMoving = false;
+    private float currentViewAngle = 0f;
 
     private void Awake()
     {
@@ -80,29 +80,30 @@ public class GridChaserEnemyController : MonoBehaviour
         List<Vector2> possibleMoves = GetPossibleMoves();
         if (possibleMoves.Count == 0) return Vector2.zero;
 
+        // If we have a target and pass the meanness check
         if (currentTarget != null && Random.value < meanness)
         {
-            // Try to move towards target
-            Vector2 directionToTarget = ((Vector2)currentTarget.position - gridPosition).normalized;
-            Vector2 bestMove = possibleMoves[0];
-            float bestDistance = float.MaxValue;
+            Vector2 dirToTarget = (Vector2)currentTarget.position - gridPosition;
+            Vector2 bestMove = Vector2.zero;
+            float bestScore = float.MaxValue;
 
+            // Evaluate each possible move
             foreach (Vector2 move in possibleMoves)
             {
-                float distance = Vector2.Distance(gridPosition + move, currentTarget.position);
-                if (distance < bestDistance)
+                float score = Vector2.Distance(gridPosition + move, currentTarget.position);
+                if (score < bestScore)
                 {
-                    bestDistance = distance;
+                    bestScore = score;
                     bestMove = move;
                 }
             }
-            return bestMove;
+
+            if (bestMove != Vector2.zero)
+                return bestMove;
         }
-        else
-        {
-            // Random movement
-            return possibleMoves[Random.Range(0, possibleMoves.Count)];
-        }
+        
+        // Default to random movement if no target or failed meanness check
+        return possibleMoves[Random.Range(0, possibleMoves.Count)];
     }
 
     private List<Vector2> GetPossibleMoves()
@@ -115,7 +116,6 @@ public class GridChaserEnemyController : MonoBehaviour
 
         foreach (Vector2 dir in directions)
         {
-            Vector2 newPos = gridPosition + dir;
             if (!Physics2D.CircleCast(gridPosition, 0.4f, dir, 1f, obstacleMask))
             {
                 possibleMoves.Add(dir);
@@ -132,22 +132,8 @@ public class GridChaserEnemyController : MonoBehaviour
         Vector2 targetPos = gridPosition + moveDirection;
         float elapsedTime = 0;
 
-        // Update sprite based on movement direction
-        if (moveDirection.y > 0)
-        {
-            spriteRenderer.sprite = upSprite;
-            spriteRenderer.flipX = false;
-        }
-        else if (moveDirection.y < 0)
-        {
-            spriteRenderer.sprite = downSprite;
-            spriteRenderer.flipX = false;
-        }
-        else
-        {
-            spriteRenderer.sprite = sideSprite;
-            spriteRenderer.flipX = moveDirection.x < 0;
-        }
+        // Update sprite and view direction based on movement
+        UpdateSpriteAndViewDirection(moveDirection);
 
         while (elapsedTime < moveInterval)
         {
@@ -160,6 +146,33 @@ public class GridChaserEnemyController : MonoBehaviour
         gridPosition = targetPos;
         transform.position = new Vector3(gridPosition.x, gridPosition.y, transform.position.z);
         isMoving = false;
+    }
+
+    private void UpdateSpriteAndViewDirection(Vector2 moveDirection)
+    {
+        if (moveDirection.y > 0)
+        {
+            spriteRenderer.sprite = upSprite;
+            spriteRenderer.flipX = false;
+            currentViewAngle = 90f;
+        }
+        else if (moveDirection.y < 0)
+        {
+            spriteRenderer.sprite = downSprite;
+            spriteRenderer.flipX = false;
+            currentViewAngle = -90f;
+        }
+        else if (moveDirection.x != 0)
+        {
+            spriteRenderer.sprite = sideSprite;
+            spriteRenderer.flipX = moveDirection.x < 0;
+            currentViewAngle = moveDirection.x > 0 ? 0f : 180f;
+        }
+
+        if (moveDirection.x != 0 && moveDirection.y != 0)
+        {
+            currentViewAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+        }
     }
 
     private IEnumerator FindTargetsWithDelay(float delay)
@@ -179,14 +192,15 @@ public class GridChaserEnemyController : MonoBehaviour
         foreach (var target in targetsInRadius)
         {
             Vector2 dirToTarget = (target.transform.position - transform.position).normalized;
-            float angleToTarget = Vector2.Angle(Vector2.right, dirToTarget);
+            float angleToTarget = Vector2.SignedAngle(DirFromAngle(currentViewAngle), dirToTarget);
 
-            if (angleToTarget < viewAngle / 2)
+            if (Mathf.Abs(angleToTarget) < viewAngle / 2)
             {
                 float distToTarget = Vector2.Distance(transform.position, target.transform.position);
                 if (!Physics2D.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask))
                 {
                     currentTarget = target.transform;
+                    Debug.Log("Player detected!");
                     break;
                 }
             }
@@ -195,13 +209,15 @@ public class GridChaserEnemyController : MonoBehaviour
 
     private void DrawFieldOfView()
     {
+        if (viewMeshFilter == null) return;
+        
         int stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
         float stepAngleSize = viewAngle / stepCount;
         List<Vector2> viewPoints = new List<Vector2>();
 
         for (int i = 0; i <= stepCount; i++)
         {
-            float angle = transform.eulerAngles.z - viewAngle / 2 + stepAngleSize * i;
+            float angle = currentViewAngle - viewAngle / 2 + stepAngleSize * i;
             Vector2 direction = DirFromAngle(angle);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, viewRadius, obstacleMask);
 
