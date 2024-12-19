@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     
     public static GameManager instance;
-    private Image loserimage;
+    public bool GameOver = false;
     public int detections = 0;
     public bool holdTreasure = false;
 
@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(detections == 8) {
-            return;
+        if(detections == 12) {
+            GameOver = true;
         }
 
 
