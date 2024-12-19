@@ -10,8 +10,6 @@ public class UIAnimator : MonoBehaviour
     [Header("Animation Settings")]
     [SerializeField] private float frameInterval = 0.2f;
     
-    [Header("Player Reference")]
-    [SerializeField] private GameObject playerObject;
     
     private Image uiImage;
     private Interactor playerInteractor;
@@ -28,19 +26,7 @@ public class UIAnimator : MonoBehaviour
             return;
         }
         
-        // Get player's Interactor component
-        if (playerObject)
-        {
-            playerInteractor = playerObject.GetComponent<Interactor>();
-            if (!playerInteractor)
-            {
-                Debug.LogError("Player object is missing Interactor component!");
-            }
-        }
-        else
-        {
-            Debug.LogError("Player object reference is missing!");
-        }
+        
 
         // Start hidden
         uiImage.enabled = false;
@@ -48,10 +34,10 @@ public class UIAnimator : MonoBehaviour
 
     private void Update()
     {
-        if (!playerInteractor) return;
+        
 
         // Check if player has treasure
-        if (playerInteractor.HoldTreasure)
+        if (GameManager.instance.holdTreasure == true)
         {
             if (!uiImage.enabled)
             {
