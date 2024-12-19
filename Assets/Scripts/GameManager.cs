@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private Image loserimage;
     public int detections = 0;
+    public bool holdTreasure = false;
 
     void Start(){
      

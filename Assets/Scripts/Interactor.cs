@@ -40,9 +40,8 @@ public class Interactor : MonoBehaviour
             if (distanceToTreasure <= interactionDistance)
             {
                 HoldTreasure = true;
-                Debug.Log("Treasure collected!");
-                // Optionally disable or destroy the treasure object
-                // treasureTransform.gameObject.SetActive(false);
+                GameManager.instance.holdTreasure = true;
+            
             }
         }
         
