@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Earnit
   - Goal
+  - treasure
+  - exit
   layers:
   - Default
   - TransparentFX
