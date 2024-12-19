@@ -111,10 +111,10 @@ MonoBehaviour:
   - {fileID: -1094679963, guid: 75e9222c14e0347c3be37524cb2f4a70, type: 3}
   - {fileID: -1370052888, guid: 75e9222c14e0347c3be37524cb2f4a70, type: 3}
   - {fileID: 20354474, guid: 75e9222c14e0347c3be37524cb2f4a70, type: 3}
-  animationInterval: 0.5
+  animationInterval: 2
   clockwise: 1
   degreesPerSprite: 30
-  viewRadius: 10
+  viewRadius: 5
   viewAngle: 60
   targetMask:
     serializedVersion: 2

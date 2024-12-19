@@ -101,11 +101,11 @@ MonoBehaviour:
   upSprite: {fileID: 1660540388, guid: b8760c0065b2d405db38254705d54f65, type: 3}
   downSprite: {fileID: -527232038, guid: b8760c0065b2d405db38254705d54f65, type: 3}
   sideSprite: {fileID: -390714762, guid: b8760c0065b2d405db38254705d54f65, type: 3}
-  meanness: 1
+  meanness: 0.801
   moveInterval: 1
   canMoveDiagonally: 0
-  viewRadius: 5
-  viewAngle: 90
+  viewRadius: 3
+  viewAngle: 60
   targetMask:
     serializedVersion: 2
     m_Bits: 256

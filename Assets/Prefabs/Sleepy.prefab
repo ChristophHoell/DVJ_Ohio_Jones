@@ -188,7 +188,7 @@ MonoBehaviour:
   transitionDuration: 0.5
   awakeDuration: 4
   viewRadius: 8
-  viewAngle: 90
+  viewAngle: 60
   targetMask:
     serializedVersion: 2
     m_Bits: 256

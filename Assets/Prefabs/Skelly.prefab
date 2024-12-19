@@ -187,8 +187,8 @@ MonoBehaviour:
   meanness: 0.1
   moveInterval: 1
   canMoveDiagonally: 0
-  viewRadius: 5
-  viewAngle: 90
+  viewRadius: 3
+  viewAngle: 60
   targetMask:
     serializedVersion: 2
     m_Bits: 256
