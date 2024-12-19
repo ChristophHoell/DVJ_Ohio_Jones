@@ -5,16 +5,14 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private TextMeshProUGUI tmPro;
+    
     public static GameManager instance;
     private int points = 0;
 
     public int detections = 0;
 
     void Start(){
-        tmPro = GetComponentInChildren<TextMeshProUGUI>();
-        tmPro.text = points.ToString();
-        AddPoints(0);
+     
     }
 
     private void Awake()
@@ -30,10 +28,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddPoints(int addpoints){
-        points += addpoints;
-        tmPro.text = points.ToString();
-    }
 
     public void PlayerDetected()
     {
