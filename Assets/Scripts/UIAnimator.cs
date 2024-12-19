@@ -79,12 +79,7 @@ public class UIAnimator : MonoBehaviour
         
         while (true)
         {
-            // Check if we have all sprites assigned
-            if (animationSprites.Length != 5)
-            {
-                Debug.LogError("Please assign exactly 5 sprites in the inspector!");
-                yield break;
-            }
+           
 
             // Update sprite
             uiImage.sprite = animationSprites[currentSpriteIndex];
