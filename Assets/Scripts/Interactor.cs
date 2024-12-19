@@ -64,7 +64,7 @@ public class Interactor : MonoBehaviour
     }
 
     private void LoadNextScene()
-    {
+    {   gameManager.holdTreasure = false;
         string currentSceneName = SceneManager.GetActiveScene().name;
         int currentIndex = System.Array.IndexOf(sceneNames, currentSceneName);
         
