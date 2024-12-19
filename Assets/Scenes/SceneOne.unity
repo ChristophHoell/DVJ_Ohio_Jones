@@ -2819,13 +2819,13 @@ MonoBehaviour:
   exitPrefab: {fileID: 2039208727891482360, guid: fba661fab9f924667ba273767432bff4, type: 3}
   treasurePrefab: {fileID: 4466434535945022319, guid: ba33220b15b9e4467a027c095dca63c5, type: 3}
   minEnemyType1: 8
-  maxEnemyType1: 12
-  minEnemyType2: 2
+  maxEnemyType1: 9
+  minEnemyType2: 6
   maxEnemyType2: 6
-  minEnemyType3: 3
-  maxEnemyType3: 3
-  minEnemyType4: 4
-  maxEnemyType4: 5
+  minEnemyType3: 6
+  maxEnemyType3: 6
+  minEnemyType4: 5
+  maxEnemyType4: 6
   minObstacles: 431
   maxObstacles: 465
 --- !u!4 &486854040

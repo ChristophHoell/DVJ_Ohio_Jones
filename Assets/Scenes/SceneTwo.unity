@@ -2820,12 +2820,12 @@ MonoBehaviour:
   treasurePrefab: {fileID: 4466434535945022319, guid: ba33220b15b9e4467a027c095dca63c5, type: 3}
   minEnemyType1: 8
   maxEnemyType1: 12
-  minEnemyType2: 2
-  maxEnemyType2: 6
-  minEnemyType3: 3
-  maxEnemyType3: 3
-  minEnemyType4: 4
-  maxEnemyType4: 5
+  minEnemyType2: 6
+  maxEnemyType2: 8
+  minEnemyType3: 8
+  maxEnemyType3: 9
+  minEnemyType4: 9
+  maxEnemyType4: 12
   minObstacles: 431
   maxObstacles: 465
 --- !u!4 &486854040
