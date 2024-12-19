@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(detections == 12) {
+        if(detections == 4) {
             GameOver = true;
         }
 

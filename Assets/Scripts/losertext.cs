@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement; // For scene loading
 public class LoserText : MonoBehaviour
 {
     private Image uiImage;
+    [Header("Game Over Sound")]
+    [SerializeField] private AudioSource gameOverAudioSource; // Attach the AudioSource here
 
     private void Start()
     {
@@ -19,6 +21,12 @@ public class LoserText : MonoBehaviour
 
         // Start hidden
         uiImage.enabled = false;
+
+        // Ensure the AudioSource is set up correctly
+        if (gameOverAudioSource == null)
+        {
+            Debug.LogError("Game Over AudioSource is not assigned!");
+        }
     }
 
     private void Update()
@@ -27,7 +35,15 @@ public class LoserText : MonoBehaviour
         {
             // Show the image and start the delay coroutine
             uiImage.enabled = true;
-            StartCoroutine(GoToSceneAfterDelay("MainMenu")); // Replace "YourSceneNameHere" with the actual scene name
+
+            // Play the game-over sound if it exists
+            if (gameOverAudioSource != null)
+            {
+                gameOverAudioSource.Play();
+            }
+
+            // Start the delay coroutine to switch scenes
+            StartCoroutine(GoToSceneAfterDelay("MainMenu")); // Replace "MainMenu" with your desired scene name
         }
     }
 

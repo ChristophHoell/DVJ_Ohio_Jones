@@ -11,9 +11,12 @@ public class Interactor : MonoBehaviour
     private GameManager gameManager;
     
     private string[] sceneNames = {
-        "Level1",
-        "Level2",
-        "Level3",
+        "SceneOne",
+        "SceneTwo",
+        "SceneThree",
+        "SceneFour",
+        "SceneFive",
+        "SceneSix",
         // Add more scene names as needed
     };
 
