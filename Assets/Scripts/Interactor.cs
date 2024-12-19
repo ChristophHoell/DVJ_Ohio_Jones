@@ -4,18 +4,32 @@ using UnityEngine.SceneManagement;
 public class Interactor : MonoBehaviour
 {
     public bool HoldTreasure = false;
-    public float interactionDistance = 1f; // Distance at which interaction occurs
+    public float interactionDistance = 1f;
     
-    public Transform treasureTransform; // Reference to treasure's transform
-    public Transform exitTransform;     // Reference to exit's transform
+    private Transform treasureTransform;
+    private Transform exitTransform;
     
-    // Array of scene names in build order
     private string[] sceneNames = {
         "Level1",
         "Level2",
         "Level3",
         // Add more scene names as needed
     };
+
+    private void Start()
+    {
+        // Find objects by tags
+        GameObject treasureObj = GameObject.FindGameObjectWithTag("treasure");
+        GameObject exitObj = GameObject.FindGameObjectWithTag("exit");
+        
+        // Get their transforms if found
+        if (treasureObj != null) treasureTransform = treasureObj.transform;
+        if (exitObj != null) exitTransform = exitObj.transform;
+        
+        // Error checking
+        if (treasureTransform == null) Debug.LogWarning("No object with 'treasure' tag found in scene!");
+        if (exitTransform == null) Debug.LogWarning("No object with 'exit' tag found in scene!");
+    }
 
     private void Update()
     {
@@ -45,14 +59,11 @@ public class Interactor : MonoBehaviour
 
     private void LoadNextScene()
     {
-        // Get current scene index
         string currentSceneName = SceneManager.GetActiveScene().name;
         int currentIndex = System.Array.IndexOf(sceneNames, currentSceneName);
         
-        // If current scene is found in array
         if (currentIndex != -1)
         {
-            // If there's a next scene, load it
             if (currentIndex + 1 < sceneNames.Length)
             {
                 Debug.Log($"Loading next scene: {sceneNames[currentIndex + 1]}");
