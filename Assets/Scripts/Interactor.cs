@@ -3,11 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class Interactor : MonoBehaviour
 {
-    public bool HoldTreasure = false;
     public float interactionDistance = 1f;
     
     private Transform treasureTransform;
     private Transform exitTransform;
+    
+    private GameManager gameManager;
     
     private string[] sceneNames = {
         "Level1",
@@ -18,6 +19,8 @@ public class Interactor : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.instance;
+        
         // Find objects by tags
         GameObject treasureObj = GameObject.FindGameObjectWithTag("treasure");
         GameObject exitObj = GameObject.FindGameObjectWithTag("exit");
@@ -34,19 +37,18 @@ public class Interactor : MonoBehaviour
     private void Update()
     {
         // Check distance to treasure
-        if (treasureTransform != null && !HoldTreasure)
+        if (treasureTransform != null && !gameManager.holdTreasure)
         {
             float distanceToTreasure = Vector2.Distance(transform.position, treasureTransform.position);
             if (distanceToTreasure <= interactionDistance)
             {
-                HoldTreasure = true;
-                GameManager.instance.holdTreasure = true;
+                gameManager.holdTreasure = true;
             
             }
         }
         
         // Check distance to exit
-        if (exitTransform != null && HoldTreasure)
+        if (exitTransform != null && gameManager.holdTreasure)
         {
             float distanceToExit = Vector2.Distance(transform.position, exitTransform.position);
             if (distanceToExit <= interactionDistance)

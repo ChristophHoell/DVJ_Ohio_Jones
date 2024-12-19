@@ -6,12 +6,11 @@ public class Treasure : MonoBehaviour
     [SerializeField] private Sprite baseSprite;
     [SerializeField] private Sprite lootedSprite;
     
-    [Header("Player Reference")]
-    [SerializeField] private GameObject playerObject;
-    
     private SpriteRenderer spriteRenderer;
     private Interactor playerInteractor;
     private bool hasBeenLooted = false;
+    
+    private GameManager gameManager;
 
     private void Start()
     {
@@ -24,25 +23,13 @@ public class Treasure : MonoBehaviour
             spriteRenderer.sprite = baseSprite;
         }
         
-        // Get the Interactor component from the player
-        if (playerObject)
-        {
-            playerInteractor = playerObject.GetComponent<Interactor>();
-            if (!playerInteractor)
-            {
-                Debug.LogError("Player object is missing Interactor component!");
-            }
-        }
-        else
-        {
-            Debug.LogError("Player object reference is missing!");
-        }
+        gameManager = GameManager.instance;
     }
 
     private void Update()
     {
         // Check if the treasure has been looted
-        if (playerInteractor && playerInteractor.HoldTreasure && !hasBeenLooted)
+        if (gameManager.holdTreasure && !hasBeenLooted)
         {
             UpdateTreasureAppearance();
         }
