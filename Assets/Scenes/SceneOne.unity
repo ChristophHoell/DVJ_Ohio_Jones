@@ -3539,38 +3539,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1477397438033356459, guid: 99b137c93f63a420881bbf6e6d53aa9d, type: 3}
-      propertyPath: upSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 887a20ea2be284f928155b437deea8f5, type: 3}
-    - target: {fileID: 1477397438033356459, guid: 99b137c93f63a420881bbf6e6d53aa9d, type: 3}
-      propertyPath: downSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f010bcb85c4b54960b0f7df784a1e4b1, type: 3}
-    - target: {fileID: 1477397438033356459, guid: 99b137c93f63a420881bbf6e6d53aa9d, type: 3}
-      propertyPath: sideSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 842d2a2a69f35424d81df9004cad8ee4, type: 3}
-    - target: {fileID: 1490523795768406249, guid: 99b137c93f63a420881bbf6e6d53aa9d, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490523795768406249, guid: 99b137c93f63a420881bbf6e6d53aa9d, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5189144849160902600, guid: 99b137c93f63a420881bbf6e6d53aa9d, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5871414216383774927, guid: 99b137c93f63a420881bbf6e6d53aa9d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5871414216383774927, guid: 99b137c93f63a420881bbf6e6d53aa9d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5871414216383774927, guid: 99b137c93f63a420881bbf6e6d53aa9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.45
@@ -3615,10 +3583,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8564600494449935478, guid: 99b137c93f63a420881bbf6e6d53aa9d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f010bcb85c4b54960b0f7df784a1e4b1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
