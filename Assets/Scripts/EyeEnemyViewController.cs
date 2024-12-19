@@ -121,7 +121,8 @@ public class EyeEnemyViewController : MonoBehaviour
                 if (!Physics2D.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target.transform);
-                    GameManager.instance.PlayerDetected();
+                    GameManager.instance.detections++;
+
                 }
             }
         }

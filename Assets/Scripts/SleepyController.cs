@@ -146,7 +146,8 @@ public class EnemySleepWakeController : MonoBehaviour
                 if (!Physics2D.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target.transform);
-                    Debug.Log("Player detected!");
+                    GameManager.instance.detections++;
+                    
                 }
             }
         }

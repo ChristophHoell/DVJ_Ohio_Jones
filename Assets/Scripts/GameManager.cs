@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class GameManager : MonoBehaviour
 {
     
     public static GameManager instance;
-    private int points = 0;
-
+    private Image loserimage;
     public int detections = 0;
 
     void Start(){
@@ -26,6 +26,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+    }
+
+    private void Update()
+    {
+        if(detections == 8) {
+            return;
+        }
+
+
+
     }
 
 
