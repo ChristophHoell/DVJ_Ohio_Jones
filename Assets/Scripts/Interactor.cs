@@ -37,6 +37,9 @@ public class Interactor : MonoBehaviour
         if (treasureTransform != null && !HoldTreasure)
         {
             float distanceToTreasure = Vector2.Distance(transform.position, treasureTransform.position);
+            // Debug.Log(distanceToTreasure);
+            // both coordinates
+            Debug.Log($"Transfrom: {transform.position}, Treasure: {treasureTransform.position}");
             if (distanceToTreasure <= interactionDistance)
             {
                 HoldTreasure = true;

@@ -200,7 +200,7 @@ public class GridChaserEnemyController : MonoBehaviour
                 if (!Physics2D.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask))
                 {
                     currentTarget = target.transform;
-                    Debug.Log("Player detected!");
+                    GameManager.instance.PlayerDetected();
                     break;
                 }
             }

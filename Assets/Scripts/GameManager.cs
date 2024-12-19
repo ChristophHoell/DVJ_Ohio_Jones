@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private int points = 0;
 
+    public int detections = 0;
+
     void Start(){
         tmPro = GetComponentInChildren<TextMeshProUGUI>();
         tmPro.text = points.ToString();
@@ -31,5 +33,11 @@ public class GameManager : MonoBehaviour
     public void AddPoints(int addpoints){
         points += addpoints;
         tmPro.text = points.ToString();
+    }
+
+    public void PlayerDetected()
+    {
+        Debug.Log("Player detected");
+        detections++;
     }
 }
