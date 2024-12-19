@@ -48,8 +48,10 @@ public class LoserText : MonoBehaviour
     }
 
     private IEnumerator GoToSceneAfterDelay(string sceneName)
-    {
+    {   GameManager.instance.GameOver = false;
         yield return new WaitForSeconds(3); // Wait for 3 seconds
+        GameManager.instance.GameOver = false;
         SceneManager.LoadScene(sceneName); // Load the specified scene
+        GameManager.instance.GameOver = false;
     }
 }

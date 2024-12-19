@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Awake()
-    {
+    {   GameOver = false;
         if (instance == null)
         {
             instance = this;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(detections == 4) {
+        if(detections == 2) {
             GameOver = true;
         }
 
