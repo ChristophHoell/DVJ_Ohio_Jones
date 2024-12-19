@@ -40,8 +40,10 @@ public class Interactor : MonoBehaviour
         if (treasureTransform != null && !gameManager.holdTreasure)
         {
             float distanceToTreasure = Vector2.Distance(transform.position, treasureTransform.position);
+            Debug.Log($"Transform: {transform.position}, Treasure: {treasureTransform.position}, Distance: {distanceToTreasure}");
             if (distanceToTreasure <= interactionDistance)
             {
+                Debug.Log("Found treasure");
                 gameManager.holdTreasure = true;
             
             }
