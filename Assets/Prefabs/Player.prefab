@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8103604605529722253}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.4630003, y: 3.514, z: 0}
   m_LocalScale: {x: 2.309903, y: 2.4002843, z: 1}
   m_ConstrainProportionsScale: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4b720c9dcff4c0d80e74f84f8b0ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 5
 --- !u!114 &105808765981150716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,3 +186,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoldTreasure: 0
+  interactionDistance: 1
